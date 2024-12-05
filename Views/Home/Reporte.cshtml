@@ -1,0 +1,53 @@
+﻿@*
+
+*@
+@{
+    var listReporte = ViewBag.Reporte as List<Reporte>;
+}
+
+@{
+    var peAnio = ViewBag.PeAnio as List<int>;
+}
+
+<h2>Selecciona tus opciones</h2>
+
+<div class="combobox-container">
+    <select id="peAnio">
+        <option value="">AÑO</option>
+        @foreach (var anio in @ViewBag.PeAnio)
+        {
+            <option value="@anio">@anio</option>
+        }
+    </select>
+
+    <select id="peTipo" disabled>
+        <option value="">TIPO</option>
+    </select>
+
+    <select id="teNumeroPeriodo" disabled>
+        <option value="">NUMERO</option>
+    </select>
+</div>
+
+
+<table id="rowSelect" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Codigo</th>
+            <th>Nombre</th>
+            <th>Ver</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var reports in listReporte)
+        {
+
+            <tr>
+                <td id="IdCodigo">@Html.DisplayFor(m => reports.ReCodigo)</td>
+                <td>@Html.DisplayFor(m => reports.ReNombre)</td>
+                <td><button class="select-row">Ver</button></td>
+            </tr>
+        }
+    </tbody>
+</table>
